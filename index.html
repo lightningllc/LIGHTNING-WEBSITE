@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lightning Landscape Services provides lawn care, tree services, roof and gutter cleaning, power washing, mulch and pine straw, and junk removal.">
+  <title>Lightning Landscape Services | Landscaping & Property Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Lightning Landscape Services home">
+        <img src="images/lightning-logo.png" alt="Lightning Landscape Services logo">
+      </a>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">LIGHTNING LANDSCAPE SERVICES</p>
+        <h1>Quality service that makes your property stand out.</h1>
+        <p class="hero-text">Reliable landscaping and property services with attention to detail, efficient work, and solutions built around your needs and budget.</p>
+        <div class="buttons">
+          <a class="button primary" href="#contact">Get a Free Estimate</a>
+          <a class="button secondary" href="tel:4047755207">Call 404-775-5207</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">LIGHTNING LANDSCAPE SERVICES</p>
+          <h2>Small business service. Big attention to detail.</h2>
+        </div>
+        <p>Family-owned and focused on customer needs, Lightning Landscape Services works with your budget and takes pride in quick, efficient, detail-oriented service.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">WHAT WE DO</p>
+          <h2>Our Services</h2>
+          <p>From routine yard care to property cleanups, we help keep your property looking clean, safe, and maintained.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><span>🌱</span><h3>Lawn Services</h3><p>Mowing, edging, eliminating stubborn weeds, cleanups, and more to keep your lawn looking sharp.</p></article>
+          <article class="card"><span>🌳</span><h3>Tree Services</h3><p>Licensed and insured tree services, including emergency tree removal and routine tree care.</p></article>
+          <article class="card"><span>🏠</span><h3>Roof & Gutter Cleaning</h3><p>Help remove buildup and debris from roofs and gutters while keeping your property looking its best.</p></article>
+          <article class="card"><span>💦</span><h3>Power Washing</h3><p>House washes and driveway cleaning to refresh exterior surfaces and improve curb appeal.</p></article>
+          <article class="card"><span>🌲</span><h3>Mulch & Pine Straw</h3><p>Fresh mulch and pine straw installation for cleaner beds and a finished landscape appearance.</p></article>
+          <article class="card"><span>🗑️</span><h3>Junk Removal</h3><p>Convenient removal of unwanted items and property debris so you can reclaim your space.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section dark">
+      <div class="container two-col about">
+        <div>
+          <p class="eyebrow">ABOUT US</p>
+          <h2>Built around your needs.</h2>
+        </div>
+        <div>
+          <p>Lightning Landscape Services is a family-owned small business dedicated to dependable property care. We pay attention to the details, work efficiently, and strive to provide services that fit each customer's needs and budget.</p>
+          <p>Whether you need regular lawn maintenance, a cleanup, tree work, or help improving your property's appearance, we're ready to help.</p>
+          <a class="button primary" href="#contact">Request an Estimate</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">OUR WORK</p>
+          <h2>Before & After</h2>
+          <p>Add your project photos here to show customers the difference your work makes.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="photo-placeholder"><strong>BEFORE</strong><span>Add your before photo</span></div>
+          <div class="photo-placeholder"><strong>AFTER</strong><span>Add your after photo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h2>Ready to get your property looking better?</h2>
+          <p>Tell us what you need and we'll get back to you about your project.</p>
+          <p class="phone"><a href="tel:4047755207">404-775-5207</a></p>
+        </div>
+        <form action="mailto:4047755207" method="post" enctype="text/plain">
+          <label>Name<input type="text" name="Name" required></label>
+          <label>Phone<input type="tel" name="Phone" required></label>
+          <label>Email<input type="email" name="Email"></label>
+          <label>What do you need help with?<textarea name="Project" rows="5" required></textarea></label>
+          <button class="button primary" type="submit">Request Free Estimate</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer">
+      <div><img class="footer-logo" src="images/lightning-logo.png" alt="Lightning Landscape Services"><p>Quality service. Reliable results.</p></div>
+      <a href="tel:4047755207">404-775-5207</a>
+    </div>
+    <div class="copyright">© 2026 Lightning Landscape Services. All rights reserved.</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
