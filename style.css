@@ -12,7 +12,10 @@ body {
   color: #111827;
   background: #fff;
   line-height: 1.6;
-  main {
+}
+
+/* Push page content below the fixed header */
+main {
   padding-top: 82px;
 }
 
@@ -31,6 +34,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 82px;
   z-index: 9999;
   background: #fff;
   transition: transform 0.3s ease;
@@ -64,12 +68,17 @@ body {
   font-weight: 800;
 }
 
+.nav nav a:hover {
+  color: #f7c600;
+}
+
 .menu-toggle {
   display: none;
   background: none;
   border: 0;
   font-size: 1.5rem;
   color: #132d63;
+  cursor: pointer;
 }
 
 
@@ -139,9 +148,18 @@ body {
   color: #102a5d;
 }
 
+.primary:hover {
+  background: #ffd633;
+}
+
 .secondary {
   border-color: #fff;
   color: #fff;
+}
+
+.secondary:hover {
+  background: #fff;
+  color: #132d63;
 }
 
 
@@ -270,7 +288,9 @@ body {
 }
 
 
-/* Before / After image */
+/* =========================
+   BEFORE / AFTER IMAGE
+========================= */
 
 .before-after {
   position: relative;
@@ -311,7 +331,9 @@ body {
 }
 
 
-/* SLIDER */
+/* =========================
+   SLIDER
+========================= */
 
 .slider {
   position: absolute;
@@ -363,7 +385,9 @@ body {
 }
 
 
-/* LABELS */
+/* =========================
+   BEFORE / AFTER LABELS
+========================= */
 
 .before-label,
 .after-label {
@@ -389,7 +413,9 @@ body {
 }
 
 
-/* CAROUSEL ARROWS */
+/* =========================
+   CAROUSEL ARROWS
+========================= */
 
 .carousel-arrow {
   flex-shrink: 0;
@@ -422,7 +448,9 @@ body {
 }
 
 
-/* DOTS */
+/* =========================
+   CAROUSEL DOTS
+========================= */
 
 .carousel-dots {
   display: flex;
@@ -554,6 +582,11 @@ footer {
 ========================= */
 
 @media (max-width: 760px) {
+
+  /* Keep content below mobile header */
+  main {
+    padding-top: 82px;
+  }
 
   .nav nav {
     display: none;
