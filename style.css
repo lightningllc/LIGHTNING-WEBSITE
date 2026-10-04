@@ -76,7 +76,7 @@ body {
 ========================= */
 
 .hero {
-  min-height: 650px;
+  min-height: calc(650px - 82px);
   display: grid;
   place-items: center;
   background:
