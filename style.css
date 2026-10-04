@@ -584,7 +584,7 @@ footer {
   }
 
   .hero {
-    min-height: 600px;
+    min-height: calc(650px - 82px);
   }
 
   .section {
