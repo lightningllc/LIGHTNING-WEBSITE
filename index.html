@@ -1,151 +1,252 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Lightning Landscape Services provides lawn care, tree services, roof and gutter cleaning, power washing, mulch and pine straw, and junk removal.">
-  <title>Lightning Landscape Services | Landscaping & Property Services</title>
+
+  <title>Lightning Landscape Services</title>
+
+  <meta
+    name="description"
+    content="Lightning Landscape Services provides lawn care, tree services, roof and gutter cleaning, power washing, mulch and pine straw installation, and junk removal."
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <header class="site-header">
+
     <div class="container nav">
 
-      <a class="brand" href="#home" aria-label="Lightning Landscape Services home">
-        <img src="images/lightning-logo.png" alt="Lightning Landscape Services logo">
+      <a href="#home" class="brand">
+        <img src="images/lightning-logo.png" alt="Lightning Landscape Services">
       </a>
 
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
+      <button class="menu-toggle" aria-label="Open menu">
+        ☰
+      </button>
 
       <nav>
+        <a href="#home">Home</a>
         <a href="#services">Services</a>
+        <a href="#gallery">Our Work</a>
         <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
       </nav>
 
     </div>
+
   </header>
 
 
-  <main id="home">
+  <main>
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section id="home" class="hero">
+
       <div class="container hero-content">
 
         <p class="eyebrow">LIGHTNING LANDSCAPE SERVICES</p>
 
-        <h1>Quality service that makes your property stand out.</h1>
+        <h1>
+          Quality Landscaping.<br>
+          <span>Lightning Fast Service.</span>
+        </h1>
 
         <p class="hero-text">
-          Reliable landscaping and property services with attention to detail,
-          efficient work, and solutions built around your needs and budget.
+          Family-owned landscaping and property maintenance services
+          focused on quality work, attention to detail, and customer satisfaction.
         </p>
 
-        <div class="buttons">
-          <a class="button primary" href="#contact">Get a Free Estimate</a>
-          <a class="button secondary" href="tel:4047755207">
+        <div class="hero-buttons">
+
+          <a href="#contact" class="btn btn-primary">
+            Get a Free Estimate
+          </a>
+
+          <a href="tel:4047755207" class="btn btn-secondary">
             Call 404-775-5207
           </a>
+
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- INTRO -->
-    <section class="intro">
-      <div class="container two-col">
+    <!-- =========================
+         SERVICES
+    ========================== -->
 
-        <div>
-          <p class="eyebrow">LIGHTNING LANDSCAPE SERVICES</p>
-          <h2>Small business service. Big attention to detail.</h2>
-        </div>
-
-        <p>
-          Family-owned and focused on customer needs, Lightning Landscape
-          Services works with your budget and takes pride in quick,
-          efficient, detail-oriented service.
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- SERVICES -->
-    <section id="services" class="section">
+    <section id="services" class="section services-section">
 
       <div class="container">
 
         <div class="section-heading">
+
           <p class="eyebrow">WHAT WE DO</p>
+
           <h2>Our Services</h2>
 
           <p>
-            From routine yard care to property cleanups, we help keep your
-            property looking clean, safe, and maintained.
+            Reliable property services designed to keep your home
+            looking its best.
           </p>
+
         </div>
 
-        <div class="cards">
 
-          <article class="card">
-            <span>🌱</span>
-            <h3>Lawn Services</h3>
-            <p>
-              Mowing, edging, eliminating stubborn weeds, cleanups,
-              and more to keep your lawn looking sharp.
-            </p>
+        <div class="services-grid">
+
+
+          <!-- LAWN -->
+
+          <article
+            class="service-card"
+            style="background-image: url('images/lawn.jpg');"
+          >
+
+            <div class="service-overlay"></div>
+
+            <div class="service-content">
+
+              <h3>Lawn Services</h3>
+
+              <p>
+                Mowing, edging, eliminating stubborn weeds,
+                cleanup, and complete lawn maintenance.
+              </p>
+
+            </div>
+
           </article>
 
-          <article class="card">
-            <span>🌳</span>
-            <h3>Tree Services</h3>
-            <p>
-              Licensed and insured tree services, including emergency
-              tree removal and routine tree care.
-            </p>
+
+          <!-- TREE -->
+
+          <article
+            class="service-card"
+            style="background-image: url('images/tree.jpg');"
+          >
+
+            <div class="service-overlay"></div>
+
+            <div class="service-content">
+
+              <h3>Tree Services</h3>
+
+              <p>
+                Tree trimming, removal, emergency tree service,
+                and property protection.
+              </p>
+
+            </div>
+
           </article>
 
-          <article class="card">
-            <span>🏠</span>
-            <h3>Roof & Gutter Cleaning</h3>
-            <p>
-              Help remove buildup and debris from roofs and gutters
-              while keeping your property looking its best.
-            </p>
+
+          <!-- ROOF -->
+
+          <article
+            class="service-card"
+            style="background-image: url('images/roof.jpg');"
+          >
+
+            <div class="service-overlay"></div>
+
+            <div class="service-content">
+
+              <h3>Roof & Gutter Cleaning</h3>
+
+              <p>
+                Keep your roof and gutters clean, clear,
+                and looking their best.
+              </p>
+
+            </div>
+
           </article>
 
-          <article class="card">
-            <span>💦</span>
-            <h3>Power Washing</h3>
-            <p>
-              House washes and driveway cleaning to refresh exterior
-              surfaces and improve curb appeal.
-            </p>
+
+          <!-- POWER WASHING -->
+
+          <article
+            class="service-card"
+            style="background-image: url('images/pressure-washing.jpg');"
+          >
+
+            <div class="service-overlay"></div>
+
+            <div class="service-content">
+
+              <h3>Power Washing</h3>
+
+              <p>
+                House washing, driveway cleaning,
+                and exterior surface cleaning.
+              </p>
+
+            </div>
+
           </article>
 
-          <article class="card">
-            <span>🌲</span>
-            <h3>Mulch & Pine Straw</h3>
-            <p>
-              Fresh mulch and pine straw installation for cleaner beds
-              and a finished landscape appearance.
-            </p>
+
+          <!-- MULCH -->
+
+          <article
+            class="service-card"
+            style="background-image: url('images/mulch.jpg');"
+          >
+
+            <div class="service-overlay"></div>
+
+            <div class="service-content">
+
+              <h3>Mulch & Pine Straw</h3>
+
+              <p>
+                Fresh mulch and pine straw installation
+                to improve the appearance of your property.
+              </p>
+
+            </div>
+
           </article>
 
-          <article class="card">
-            <span>🗑️</span>
-            <h3>Junk Removal</h3>
-            <p>
-              Convenient removal of unwanted items and property debris
-              so you can reclaim your space.
-            </p>
+
+          <!-- JUNK -->
+
+          <article
+            class="service-card"
+            style="background-image: url('images/junk-removal.jpg');"
+          >
+
+            <div class="service-overlay"></div>
+
+            <div class="service-content">
+
+              <h3>Junk Removal</h3>
+
+              <p>
+                Fast and efficient removal of unwanted
+                items and property debris.
+              </p>
+
+            </div>
+
           </article>
+
 
         </div>
 
@@ -154,41 +255,11 @@
     </section>
 
 
-    <!-- ABOUT -->
-    <section id="about" class="section dark">
+    <!-- =========================
+         BEFORE & AFTER
+    ========================== -->
 
-      <div class="container two-col about">
-
-        <div>
-          <p class="eyebrow">ABOUT US</p>
-          <h2>Built around your needs.</h2>
-        </div>
-
-        <div>
-          <p>
-            Lightning Landscape Services is a family-owned small business
-            dedicated to dependable property care. We pay attention to the
-            details, work efficiently, and strive to provide services that
-            fit each customer's needs and budget.
-          </p>
-
-          <p>
-            Whether you need regular lawn maintenance, a cleanup, tree work,
-            or help improving your property's appearance, we're ready to help.
-          </p>
-
-          <a class="button primary" href="#contact">
-            Request an Estimate
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- BEFORE & AFTER CAROUSEL -->
-    <section id="gallery" class="section">
+    <section id="gallery" class="section gallery-section">
 
       <div class="container">
 
@@ -199,7 +270,8 @@
           <h2>Before & After</h2>
 
           <p>
-            Drag the slider on each project to see the difference our work makes.
+            See the difference quality work can make.
+            Drag the slider to compare each project.
           </p>
 
         </div>
@@ -207,7 +279,11 @@
 
         <div class="carousel-wrapper">
 
-          <button class="carousel-arrow carousel-prev" aria-label="Previous projects">
+
+          <button
+            class="carousel-arrow carousel-prev"
+            aria-label="Previous projects"
+          >
             ‹
           </button>
 
@@ -218,6 +294,7 @@
 
 
               <!-- PROJECT 1 -->
+
               <article class="project-slide">
 
                 <h3>Lawn Cleanup</h3>
@@ -226,33 +303,36 @@
 
                   <img
                     src="images/before-lawn.jpg"
-                    alt="Lawn before cleanup"
+                    alt="Before lawn cleanup"
                   >
 
                   <div class="after-image">
+
                     <img
                       src="images/after-lawn.jpg"
-                      alt="Lawn after cleanup"
+                      alt="After lawn cleanup"
                     >
+
                   </div>
-
-                  <div class="slider-line"></div>
-
-                  <div class="slider-button">
-                    ↔
-                  </div>
-
-                  <span class="before-label">BEFORE</span>
-                  <span class="after-label">AFTER</span>
 
                   <input
+                    class="slider"
                     type="range"
                     min="0"
                     max="100"
                     value="50"
-                    class="slider"
-                    aria-label="Lawn cleanup before and after"
+                    aria-label="Compare lawn cleanup"
                   >
+
+                  <div class="before-label">
+                    BEFORE
+                  </div>
+
+                  <div class="after-label">
+                    AFTER
+                  </div>
+
+                  <div class="slider-line"></div>
 
                 </div>
 
@@ -260,6 +340,7 @@
 
 
               <!-- PROJECT 2 -->
+
               <article class="project-slide">
 
                 <h3>Tree Service</h3>
@@ -268,33 +349,36 @@
 
                   <img
                     src="images/before-tree.jpg"
-                    alt="Tree before service"
+                    alt="Before tree service"
                   >
 
                   <div class="after-image">
+
                     <img
                       src="images/after-tree.jpg"
-                      alt="Tree after service"
+                      alt="After tree service"
                     >
+
                   </div>
-
-                  <div class="slider-line"></div>
-
-                  <div class="slider-button">
-                    ↔
-                  </div>
-
-                  <span class="before-label">BEFORE</span>
-                  <span class="after-label">AFTER</span>
 
                   <input
+                    class="slider"
                     type="range"
                     min="0"
                     max="100"
                     value="50"
-                    class="slider"
-                    aria-label="Tree service before and after"
+                    aria-label="Compare tree service"
                   >
+
+                  <div class="before-label">
+                    BEFORE
+                  </div>
+
+                  <div class="after-label">
+                    AFTER
+                  </div>
+
+                  <div class="slider-line"></div>
 
                 </div>
 
@@ -302,41 +386,45 @@
 
 
               <!-- PROJECT 3 -->
+
               <article class="project-slide">
 
-                <h3>Landscape Projects</h3>
+                <h3>Driveway Cleaning</h3>
 
                 <div class="before-after">
 
                   <img
-                    src="images/before-walkway.jpg"
-                    alt="BEFORE"
+                    src="images/before-driveway.jpg"
+                    alt="Before driveway cleaning"
                   >
 
                   <div class="after-image">
+
                     <img
-                      src="images/after-walkway.jpg"
-                      alt="AFTER"
+                      src="images/after-driveway.jpg"
+                      alt="After driveway cleaning"
                     >
+
                   </div>
-
-                  <div class="slider-line"></div>
-
-                  <div class="slider-button">
-                    ↔
-                  </div>
-
-                  <span class="before-label">BEFORE</span>
-                  <span class="after-label">AFTER</span>
 
                   <input
+                    class="slider"
                     type="range"
                     min="0"
                     max="100"
                     value="50"
-                    class="slider"
-                    aria-label="Driveway cleaning before and after"
+                    aria-label="Compare driveway cleaning"
                   >
+
+                  <div class="before-label">
+                    BEFORE
+                  </div>
+
+                  <div class="after-label">
+                    AFTER
+                  </div>
+
+                  <div class="slider-line"></div>
 
                 </div>
 
@@ -344,6 +432,7 @@
 
 
               <!-- PROJECT 4 -->
+
               <article class="project-slide">
 
                 <h3>Mulch Installation</h3>
@@ -352,33 +441,36 @@
 
                   <img
                     src="images/before-mulch.jpg"
-                    alt="Landscape before mulch installation"
+                    alt="Before mulch installation"
                   >
 
                   <div class="after-image">
+
                     <img
                       src="images/after-mulch.jpg"
-                      alt="Landscape after mulch installation"
+                      alt="After mulch installation"
                     >
+
                   </div>
-
-                  <div class="slider-line"></div>
-
-                  <div class="slider-button">
-                    ↔
-                  </div>
-
-                  <span class="before-label">BEFORE</span>
-                  <span class="after-label">AFTER</span>
 
                   <input
+                    class="slider"
                     type="range"
                     min="0"
                     max="100"
                     value="50"
-                    class="slider"
-                    aria-label="Mulch installation before and after"
+                    aria-label="Compare mulch installation"
                   >
+
+                  <div class="before-label">
+                    BEFORE
+                  </div>
+
+                  <div class="after-label">
+                    AFTER
+                  </div>
+
+                  <div class="slider-line"></div>
 
                 </div>
 
@@ -390,9 +482,13 @@
           </div>
 
 
-          <button class="carousel-arrow carousel-next" aria-label="Next projects">
+          <button
+            class="carousel-arrow carousel-next"
+            aria-label="Next projects"
+          >
             ›
           </button>
+
 
         </div>
 
@@ -404,96 +500,146 @@
     </section>
 
 
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
+    <!-- =========================
+         ABOUT
+    ========================== -->
 
-      <div class="container contact-grid">
+    <section id="about" class="section about-section">
 
-        <div>
+      <div class="container about-grid">
 
-          <p class="eyebrow">GET IN TOUCH</p>
+        <div class="about-content">
 
-          <h2>
-            Ready to get your property looking better?
-          </h2>
+          <p class="eyebrow">ABOUT US</p>
+
+          <h2>Family-Owned. Customer-Focused.</h2>
 
           <p>
-            Tell us what you need and we'll get back to you about your project.
+            Lightning Landscape Services is a family-owned small business
+            dedicated to helping homeowners keep their properties looking
+            their best.
           </p>
 
-          <p class="phone">
-            <a href="tel:4047755207">404-775-5207</a>
+          <p>
+            Every property and customer has different needs, which is why
+            we work with your budget and focus on the details that matter.
+            Our goal is to provide quick, efficient, and dependable service
+            without sacrificing quality.
           </p>
+
+          <p>
+            Whether you need routine lawn maintenance, tree work,
+            pressure washing, cleanup, or another property service,
+            we're here to help.
+          </p>
+
+          <a href="#contact" class="btn btn-primary">
+            Get Your Free Estimate
+          </a>
 
         </div>
 
 
-        <form action="mailto:4047755207" method="post" enctype="text/plain">
+        <div class="about-box">
 
-          <label>
-            Name
-            <input type="text" name="Name" required>
-          </label>
+          <div class="about-box-inner">
 
-          <label>
-            Phone
-            <input type="tel" name="Phone" required>
-          </label>
+            <h3>Why Choose Lightning?</h3>
 
-          <label>
-            Email
-            <input type="email" name="Email">
-          </label>
+            <ul>
 
-          <label>
-            What do you need help with?
-            <textarea name="Project" rows="5" required></textarea>
-          </label>
+              <li>Family-owned small business</li>
 
-          <button class="button primary" type="submit">
-            Request Free Estimate
-          </button>
+              <li>Attention to detail</li>
 
-        </form>
+              <li>Quick and efficient service</li>
+
+              <li>Budget-friendly options</li>
+
+              <li>Customer-focused service</li>
+
+              <li>Quality workmanship</li>
+
+            </ul>
+
+          </div>
+
+        </div>
 
       </div>
 
     </section>
 
-  </main>
 
+    <!-- =========================
+         CONTACT
+    ========================== -->
 
-  <!-- FOOTER -->
-  <footer>
+    <section id="contact" class="contact-section">
 
-    <div class="container footer">
+      <div class="container contact-content">
 
-      <div>
+        <p class="eyebrow">GET STARTED</p>
 
-        <img
-          class="footer-logo"
-          src="images/lightning-logo.png"
-          alt="Lightning Landscape Services"
-        >
+        <h2>Ready to Get Your Property Looking Its Best?</h2>
 
-        <p>Quality service. Reliable results.</p>
+        <p>
+          Contact Lightning Landscape Services today for a free estimate.
+        </p>
+
+        <div class="contact-buttons">
+
+          <a
+            href="tel:4047755207"
+            class="btn btn-primary"
+          >
+            Call 404-775-5207
+          </a>
+
+          <a
+            href="sms:4047755207"
+            class="btn btn-secondary"
+          >
+            Text Us
+          </a>
+
+        </div>
 
       </div>
 
-      <a href="tel:4047755207">
-        404-775-5207
-      </a>
+    </section>
 
-    </div>
 
-    <div class="copyright">
-      © 2026 Lightning Landscape Services. All rights reserved.
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-content">
+
+      <p>
+        © 2026 Lightning Landscape Services. All rights reserved.
+      </p>
+
+      <p>
+        <a href="tel:4047755207">
+          404-775-5207
+        </a>
+      </p>
+
     </div>
 
   </footer>
 
 
+  <!-- JAVASCRIPT -->
+
   <script src="script.js"></script>
 
 </body>
+
 </html>
