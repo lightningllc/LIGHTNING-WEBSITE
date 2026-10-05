@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  console.log("LIGHTNING SCRIPT LOADED");
-
-
   /* =========================
      MOBILE MENU
   ========================= */
@@ -26,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =========================
-     HEADER
+     HEADER HIDE / SHOW
   ========================= */
 
   const header = document.querySelector(".site-header");
@@ -49,33 +46,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =========================
-     BEFORE / AFTER
+     BEFORE / AFTER SLIDERS
   ========================= */
 
-  const beforeAfterBoxes =
-    document.querySelectorAll(".before-after");
+  const sliders = document.querySelectorAll(".before-after");
 
-  console.log(
-    "Before/After sliders found:",
-    beforeAfterBoxes.length
-  );
+  sliders.forEach(function (box) {
 
-
-  beforeAfterBoxes.forEach(function (box) {
-
-    const slider = box.querySelector(".slider");
+    const range = box.querySelector(".slider");
     const after = box.querySelector(".after-image");
     const line = box.querySelector(".slider-line");
 
-    if (!slider || !after) {
-      console.log("Slider elements missing");
-      return;
-    }
+    if (!range || !after) return;
 
 
-    function moveSlider() {
+    function updateSlider() {
 
-      const value = slider.value;
+      const value = range.value;
 
       after.style.width = value + "%";
 
@@ -86,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    slider.addEventListener("input", moveSlider);
+    range.addEventListener("input", updateSlider);
 
-    moveSlider();
+    updateSlider();
 
   });
 
@@ -97,41 +84,23 @@ document.addEventListener("DOMContentLoaded", function () {
      CAROUSEL
   ========================= */
 
-  const track =
-    document.querySelector(".carousel-track");
-
-  const slides =
-    document.querySelectorAll(".project-slide");
-
-  const next =
-    document.querySelector(".carousel-next");
-
-  const previous =
-    document.querySelector(".carousel-prev");
-
-  const dots =
-    document.querySelector(".carousel-dots");
+  const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".project-slide");
+  const previous = document.querySelector(".carousel-prev");
+  const next = document.querySelector(".carousel-next");
+  const dots = document.querySelector(".carousel-dots");
 
 
-  console.log(
-    "Carousel slides found:",
-    slides.length
-  );
-
-
-  if (!track || !next || !previous || slides.length === 0) {
-
-    console.log("CAROUSEL ELEMENTS ARE MISSING");
-
+  if (!track || !slides.length || !previous || !next) {
+    console.log("Carousel elements not found.");
     return;
-
   }
 
 
   let currentPage = 0;
 
 
-  function getSlidesPerPage() {
+  function slidesPerPage() {
 
     if (window.innerWidth <= 760) {
       return 1;
@@ -142,80 +111,34 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  function getTotalPages() {
+  function totalPages() {
 
     return Math.ceil(
-      slides.length / getSlidesPerPage()
+      slides.length / slidesPerPage()
     );
-
-  }
-
-
-  function createDots() {
-
-    if (!dots) return;
-
-    dots.innerHTML = "";
-
-    const total =
-      getTotalPages();
-
-
-    for (let i = 0; i < total; i++) {
-
-      const dot =
-        document.createElement("button");
-
-      dot.className = "carousel-dot";
-
-      if (i === currentPage) {
-        dot.classList.add("active");
-      }
-
-
-      dot.addEventListener("click", function () {
-
-        currentPage = i;
-
-        updateCarousel();
-
-      });
-
-
-      dots.appendChild(dot);
-
-    }
 
   }
 
 
   function updateCarousel() {
 
-    /*
-      Each page moves exactly one
-      visible screen of projects.
-    */
-
-    const total =
-      getTotalPages();
-
+    const pages = totalPages();
 
     if (currentPage < 0) {
       currentPage = 0;
     }
 
-
-    if (currentPage >= total) {
-      currentPage = total - 1;
+    if (currentPage >= pages) {
+      currentPage = pages - 1;
     }
 
 
-    const percent =
-      currentPage * 100;
-
+    /*
+      Each page moves one full carousel window.
+    */
 
     track.style.transform =
-      "translateX(-" + percent + "%)";
+      "translateX(-" + (currentPage * 100) + "%)";
 
 
     previous.disabled =
@@ -223,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     next.disabled =
-      currentPage === total - 1;
+      currentPage === pages - 1;
 
 
     if (dots) {
@@ -243,9 +166,39 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  function createDots() {
+
+    if (!dots) return;
+
+    dots.innerHTML = "";
+
+    const pages = totalPages();
+
+
+    for (let i = 0; i < pages; i++) {
+
+      const dot = document.createElement("button");
+
+      dot.className = "carousel-dot";
+
+      dot.addEventListener("click", function () {
+
+        currentPage = i;
+
+        updateCarousel();
+
+      });
+
+      dots.appendChild(dot);
+
+    }
+
+  }
+
+
   next.addEventListener("click", function () {
 
-    if (currentPage < getTotalPages() - 1) {
+    if (currentPage < totalPages() - 1) {
 
       currentPage++;
 
@@ -283,6 +236,5 @@ document.addEventListener("DOMContentLoaded", function () {
   createDots();
 
   updateCarousel();
-
 
 });
