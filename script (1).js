@@ -1,147 +1,140 @@
-/* ========================================
-   MOBILE MENU
-======================================== */
+document.addEventListener("DOMContentLoaded", function () {
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav nav");
-
-if (menuToggle && navMenu) {
-
-  menuToggle.addEventListener("click", function () {
-
-    navMenu.classList.toggle("open");
-
-  });
+  console.log("LIGHTNING SCRIPT LOADED");
 
 
-  document.querySelectorAll(".nav nav a").forEach(function (link) {
+  /* =========================
+     MOBILE MENU
+  ========================= */
 
-    link.addEventListener("click", function () {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav nav");
 
-      navMenu.classList.remove("open");
+  if (menuToggle && navMenu) {
 
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("open");
     });
 
-  });
-
-}
-
-
-/* ========================================
-   HEADER SHOW / HIDE ON SCROLL
-======================================== */
-
-const header = document.querySelector(".site-header");
-
-let lastScrollTop = 0;
-
-window.addEventListener("scroll", function () {
-
-  const scrollTop =
-    window.pageYOffset ||
-    document.documentElement.scrollTop;
-
-
-  if (scrollTop > lastScrollTop && scrollTop > 80) {
-
-    header.classList.add("hide");
-
-  } else {
-
-    header.classList.remove("hide");
+    document.querySelectorAll(".nav nav a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navMenu.classList.remove("open");
+      });
+    });
 
   }
 
 
-  lastScrollTop = scrollTop;
+  /* =========================
+     HEADER
+  ========================= */
 
-});
+  const header = document.querySelector(".site-header");
 
+  let lastScroll = 0;
 
-/* ========================================
-   BEFORE & AFTER SLIDERS
-======================================== */
+  window.addEventListener("scroll", function () {
 
-document.querySelectorAll(".before-after").forEach(function (sliderBox) {
+    const currentScroll = window.scrollY;
 
-  const slider =
-    sliderBox.querySelector(".slider");
-
-  const afterImage =
-    sliderBox.querySelector(".after-image");
-
-  const sliderLine =
-    sliderBox.querySelector(".slider-line");
-
-
-  if (!slider || !afterImage) {
-    return;
-  }
-
-
-  function updateSlider() {
-
-    const value = slider.value;
-
-    afterImage.style.width = value + "%";
-
-    if (sliderLine) {
-
-      sliderLine.style.left = value + "%";
-
+    if (currentScroll > lastScroll && currentScroll > 80) {
+      header.classList.add("hide");
+    } else {
+      header.classList.remove("hide");
     }
 
-  }
+    lastScroll = currentScroll;
+
+  });
 
 
-  slider.addEventListener(
-    "input",
-    updateSlider
+  /* =========================
+     BEFORE / AFTER
+  ========================= */
+
+  const beforeAfterBoxes =
+    document.querySelectorAll(".before-after");
+
+  console.log(
+    "Before/After sliders found:",
+    beforeAfterBoxes.length
   );
 
 
-  updateSlider();
+  beforeAfterBoxes.forEach(function (box) {
 
-});
+    const slider = box.querySelector(".slider");
+    const after = box.querySelector(".after-image");
+    const line = box.querySelector(".slider-line");
 
-
-/* ========================================
-   PROJECT CAROUSEL
-======================================== */
-
-const carouselTrack =
-  document.querySelector(".carousel-track");
-
-const projectSlides =
-  document.querySelectorAll(".project-slide");
-
-const previousButton =
-  document.querySelector(".carousel-prev");
-
-const nextButton =
-  document.querySelector(".carousel-next");
-
-const dotsContainer =
-  document.querySelector(".carousel-dots");
+    if (!slider || !after) {
+      console.log("Slider elements missing");
+      return;
+    }
 
 
-if (
-  carouselTrack &&
-  projectSlides.length > 0 &&
-  previousButton &&
-  nextButton &&
-  dotsContainer
-) {
+    function moveSlider() {
+
+      const value = slider.value;
+
+      after.style.width = value + "%";
+
+      if (line) {
+        line.style.left = value + "%";
+      }
+
+    }
+
+
+    slider.addEventListener("input", moveSlider);
+
+    moveSlider();
+
+  });
+
+
+  /* =========================
+     CAROUSEL
+  ========================= */
+
+  const track =
+    document.querySelector(".carousel-track");
+
+  const slides =
+    document.querySelectorAll(".project-slide");
+
+  const next =
+    document.querySelector(".carousel-next");
+
+  const previous =
+    document.querySelector(".carousel-prev");
+
+  const dots =
+    document.querySelector(".carousel-dots");
+
+
+  console.log(
+    "Carousel slides found:",
+    slides.length
+  );
+
+
+  if (!track || !next || !previous || slides.length === 0) {
+
+    console.log("CAROUSEL ELEMENTS ARE MISSING");
+
+    return;
+
+  }
+
 
   let currentPage = 0;
 
 
-  function projectsPerPage() {
+  function getSlidesPerPage() {
 
     if (window.innerWidth <= 760) {
-
       return 1;
-
     }
 
     return 2;
@@ -149,11 +142,10 @@ if (
   }
 
 
-  function totalPages() {
+  function getTotalPages() {
 
     return Math.ceil(
-      projectSlides.length /
-      projectsPerPage()
+      slides.length / getSlidesPerPage()
     );
 
   }
@@ -161,41 +153,36 @@ if (
 
   function createDots() {
 
-    dotsContainer.innerHTML = "";
+    if (!dots) return;
+
+    dots.innerHTML = "";
+
+    const total =
+      getTotalPages();
 
 
-    const pages = totalPages();
-
-
-    for (let i = 0; i < pages; i++) {
+    for (let i = 0; i < total; i++) {
 
       const dot =
         document.createElement("button");
 
+      dot.className = "carousel-dot";
 
-      dot.className =
-        "carousel-dot";
-
-
-      dot.setAttribute(
-        "aria-label",
-        "Go to project group " + (i + 1)
-      );
+      if (i === currentPage) {
+        dot.classList.add("active");
+      }
 
 
-      dot.addEventListener(
-        "click",
-        function () {
+      dot.addEventListener("click", function () {
 
-          currentPage = i;
+        currentPage = i;
 
-          updateCarousel();
+        updateCarousel();
 
-        }
-      );
+      });
 
 
-      dotsContainer.appendChild(dot);
+      dots.appendChild(dot);
 
     }
 
@@ -204,127 +191,98 @@ if (
 
   function updateCarousel() {
 
-    const perPage =
-      projectsPerPage();
-
-
     /*
-      Desktop:
-      4 projects
-      2 projects visible
-      Move 100% of the window
-
-      Mobile:
-      4 projects
-      1 project visible
-      Move 100% of the window
+      Each page moves exactly one
+      visible screen of projects.
     */
 
-    const moveAmount =
+    const total =
+      getTotalPages();
+
+
+    if (currentPage < 0) {
+      currentPage = 0;
+    }
+
+
+    if (currentPage >= total) {
+      currentPage = total - 1;
+    }
+
+
+    const percent =
       currentPage * 100;
 
 
-    carouselTrack.style.transform =
-      "translateX(-" +
-      moveAmount +
-      "%)";
+    track.style.transform =
+      "translateX(-" + percent + "%)";
 
 
-    previousButton.disabled =
+    previous.disabled =
       currentPage === 0;
 
 
-    nextButton.disabled =
-      currentPage >= totalPages() - 1;
+    next.disabled =
+      currentPage === total - 1;
 
 
-    const dots =
-      dotsContainer.querySelectorAll(
-        ".carousel-dot"
-      );
+    if (dots) {
 
+      dots.querySelectorAll(".carousel-dot")
+        .forEach(function (dot, index) {
 
-    dots.forEach(function (dot, index) {
+          dot.classList.toggle(
+            "active",
+            index === currentPage
+          );
 
-      dot.classList.toggle(
-        "active",
-        index === currentPage
-      );
+        });
 
-    });
+    }
 
   }
 
 
-  /* NEXT */
+  next.addEventListener("click", function () {
 
-  nextButton.addEventListener(
-    "click",
-    function () {
+    if (currentPage < getTotalPages() - 1) {
 
-      if (
-        currentPage <
-        totalPages() - 1
-      ) {
-
-        currentPage++;
-
-        updateCarousel();
-
-      }
-
-    }
-  );
-
-
-  /* PREVIOUS */
-
-  previousButton.addEventListener(
-    "click",
-    function () {
-
-      if (currentPage > 0) {
-
-        currentPage--;
-
-        updateCarousel();
-
-      }
-
-    }
-  );
-
-
-  /* RESIZE */
-
-  window.addEventListener(
-    "resize",
-    function () {
-
-      const pages =
-        totalPages();
-
-
-      if (currentPage >= pages) {
-
-        currentPage =
-          pages - 1;
-
-      }
-
-
-      createDots();
+      currentPage++;
 
       updateCarousel();
 
     }
-  );
+
+  });
 
 
-  /* START */
+  previous.addEventListener("click", function () {
+
+    if (currentPage > 0) {
+
+      currentPage--;
+
+      updateCarousel();
+
+    }
+
+  });
+
+
+  window.addEventListener("resize", function () {
+
+    currentPage = 0;
+
+    createDots();
+
+    updateCarousel();
+
+  });
+
 
   createDots();
 
   updateCarousel();
 
-}
+
+});
