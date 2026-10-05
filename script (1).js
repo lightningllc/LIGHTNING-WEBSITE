@@ -1,82 +1,113 @@
-/* =========================
+/* ========================================
    MOBILE MENU
-========================= */
+======================================== */
 
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav nav');
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav nav");
 
-if (toggle) {
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+if (menuToggle && navMenu) {
+
+  menuToggle.addEventListener("click", function () {
+
+    navMenu.classList.toggle("open");
+
   });
 
-  document.querySelectorAll('.nav nav a').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
+
+  document.querySelectorAll(".nav nav a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+      navMenu.classList.remove("open");
+
     });
+
   });
+
 }
 
 
-/* =========================
-   HIDE HEADER WHEN SCROLLING
-========================= */
+/* ========================================
+   HEADER SHOW / HIDE ON SCROLL
+======================================== */
+
+const header = document.querySelector(".site-header");
 
 let lastScrollTop = 0;
-const header = document.querySelector(".site-header");
 
 window.addEventListener("scroll", function () {
 
   const scrollTop =
-    window.pageYOffset || document.documentElement.scrollTop;
+    window.pageYOffset ||
+    document.documentElement.scrollTop;
+
 
   if (scrollTop > lastScrollTop && scrollTop > 80) {
 
-    // Scrolling DOWN
     header.classList.add("hide");
 
   } else {
 
-    // Scrolling UP
     header.classList.remove("hide");
 
   }
+
 
   lastScrollTop = scrollTop;
 
 });
 
 
-/* =========================
+/* ========================================
    BEFORE & AFTER SLIDERS
-========================= */
+======================================== */
 
-const beforeAfterSliders =
-  document.querySelectorAll(".before-after");
+document.querySelectorAll(".before-after").forEach(function (sliderBox) {
 
-beforeAfterSliders.forEach(function (container) {
+  const slider =
+    sliderBox.querySelector(".slider");
 
-  const slider = container.querySelector(".slider");
-  const afterImage = container.querySelector(".after-image");
-  const sliderLine = container.querySelector(".slider-line");
-  const sliderButton = container.querySelector(".slider-button");
+  const afterImage =
+    sliderBox.querySelector(".after-image");
 
-  slider.addEventListener("input", function () {
+  const sliderLine =
+    sliderBox.querySelector(".slider-line");
 
-    const value = this.value;
+
+  if (!slider || !afterImage) {
+    return;
+  }
+
+
+  function updateSlider() {
+
+    const value = slider.value;
 
     afterImage.style.width = value + "%";
-    sliderLine.style.left = value + "%";
-    sliderButton.style.left = value + "%";
 
-  });
+    if (sliderLine) {
+
+      sliderLine.style.left = value + "%";
+
+    }
+
+  }
+
+
+  slider.addEventListener(
+    "input",
+    updateSlider
+  );
+
+
+  updateSlider();
 
 });
 
 
-/* =========================
+/* ========================================
    PROJECT CAROUSEL
-========================= */
+======================================== */
 
 const carouselTrack =
   document.querySelector(".carousel-track");
@@ -94,61 +125,75 @@ const dotsContainer =
   document.querySelector(".carousel-dots");
 
 
-if (carouselTrack && projectSlides.length > 0) {
+if (
+  carouselTrack &&
+  projectSlides.length > 0 &&
+  previousButton &&
+  nextButton &&
+  dotsContainer
+) {
 
   let currentPage = 0;
 
 
-  /* Number of projects shown at once */
-
   function projectsPerPage() {
 
     if (window.innerWidth <= 760) {
+
       return 1;
+
     }
 
     return 2;
+
   }
 
-
-  /* Number of carousel pages */
 
   function totalPages() {
 
     return Math.ceil(
-      projectSlides.length / projectsPerPage()
+      projectSlides.length /
+      projectsPerPage()
     );
 
   }
 
 
-  /* Create navigation dots */
-
   function createDots() {
 
     dotsContainer.innerHTML = "";
 
+
     const pages = totalPages();
+
 
     for (let i = 0; i < pages; i++) {
 
       const dot =
         document.createElement("button");
 
-      dot.className = "carousel-dot";
+
+      dot.className =
+        "carousel-dot";
+
 
       dot.setAttribute(
         "aria-label",
         "Go to project group " + (i + 1)
       );
 
-      dot.addEventListener("click", function () {
 
-        currentPage = i;
+      dot.addEventListener(
+        "click",
+        function () {
 
-        updateCarousel();
+          currentPage = i;
 
-      });
+          updateCarousel();
+
+        }
+      );
+
 
       dotsContainer.appendChild(dot);
 
@@ -157,38 +202,47 @@ if (carouselTrack && projectSlides.length > 0) {
   }
 
 
-  /* Update carousel position */
-
   function updateCarousel() {
 
-    const perPage = projectsPerPage();
+    const perPage =
+      projectsPerPage();
+
 
     /*
-      Each project takes:
-      Desktop = 50%
-      Mobile  = 100%
+      Desktop:
+      4 projects
+      2 projects visible
+      Move 100% of the window
+
+      Mobile:
+      4 projects
+      1 project visible
+      Move 100% of the window
     */
 
     const moveAmount =
       currentPage * 100;
 
+
     carouselTrack.style.transform =
-      "translateX(-" + moveAmount + "%)";
+      "translateX(-" +
+      moveAmount +
+      "%)";
 
-
-    /* Update arrows */
 
     previousButton.disabled =
       currentPage === 0;
+
 
     nextButton.disabled =
       currentPage >= totalPages() - 1;
 
 
-    /* Update dots */
-
     const dots =
-      dotsContainer.querySelectorAll(".carousel-dot");
+      dotsContainer.querySelectorAll(
+        ".carousel-dot"
+      );
+
 
     dots.forEach(function (dot, index) {
 
@@ -204,56 +258,73 @@ if (carouselTrack && projectSlides.length > 0) {
 
   /* NEXT */
 
-  nextButton.addEventListener("click", function () {
+  nextButton.addEventListener(
+    "click",
+    function () {
 
-    if (currentPage < totalPages() - 1) {
+      if (
+        currentPage <
+        totalPages() - 1
+      ) {
 
-      currentPage++;
+        currentPage++;
 
-      updateCarousel();
+        updateCarousel();
+
+      }
 
     }
-
-  });
+  );
 
 
   /* PREVIOUS */
 
-  previousButton.addEventListener("click", function () {
+  previousButton.addEventListener(
+    "click",
+    function () {
 
-    if (currentPage > 0) {
+      if (currentPage > 0) {
 
-      currentPage--;
+        currentPage--;
+
+        updateCarousel();
+
+      }
+
+    }
+  );
+
+
+  /* RESIZE */
+
+  window.addEventListener(
+    "resize",
+    function () {
+
+      const pages =
+        totalPages();
+
+
+      if (currentPage >= pages) {
+
+        currentPage =
+          pages - 1;
+
+      }
+
+
+      createDots();
 
       updateCarousel();
 
     }
-
-  });
-
-
-  /* Recalculate when screen changes */
-
-  window.addEventListener("resize", function () {
-
-    const pages = totalPages();
-
-    if (currentPage >= pages) {
-
-      currentPage = pages - 1;
-
-    }
-
-    createDots();
-
-    updateCarousel();
-
-  });
+  );
 
 
-  /* Initial setup */
+  /* START */
 
   createDots();
+
   updateCarousel();
 
 }
