@@ -17,8 +17,36 @@ document.querySelectorAll(".before-after").forEach(function (box) {
     }
   }
 
+  function setSliderFromPointer(event) {
+    const bounds = box.getBoundingClientRect();
+    const position = ((event.clientX - bounds.left) / bounds.width) * 100;
+    range.value = Math.max(0, Math.min(100, position));
+    updateSlider();
+  }
+
+  let isDragging = false;
+
+  box.addEventListener("pointerdown", function (event) {
+    isDragging = true;
+    box.setPointerCapture(event.pointerId);
+    setSliderFromPointer(event);
+  });
+
+  box.addEventListener("pointermove", function (event) {
+    if (isDragging) {
+      setSliderFromPointer(event);
+    }
+  });
+
+  box.addEventListener("pointerup", function () {
+    isDragging = false;
+  });
+
+  box.addEventListener("pointercancel", function () {
+    isDragging = false;
+  });
+
   range.addEventListener("input", updateSlider);
-  range.addEventListener("change", updateSlider);
 
   updateSlider();
 });
