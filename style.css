@@ -27,12 +27,6 @@
   pointer-events: none;
 }
 
-.after-image img {
-  /* Keep the After photo the same size as the Before photo while dragging. */
-  position: absolute;
-  inset: 0;
-}
-
 .slider {
   position: absolute;
   inset: 0;
@@ -41,15 +35,7 @@
   height: 100%;
   margin: 0;
   opacity: 0;
-  cursor: ew-resize;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.slider:focus-visible {
-  opacity: 1;
-  outline: 3px solid #f7c600;
-  outline-offset: -3px;
+  pointer-events: none;
 }
 
 .slider-line {
@@ -85,4 +71,10 @@
 
 .after-label {
   right: 15px;
+}
+
+@media (max-width: 760px) {
+  .before-after {
+    height: 320px;
+  }
 }
